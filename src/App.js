@@ -1,13 +1,17 @@
 import React from 'react';
-import { Categories, Header, PizzaBlock, Sort } from './components';
 import axios from 'axios';
 import style from './scss/app.scss';
+import Home from './Pages/Home.jsx';
+import { Header } from './components/index.jsx';
+
 function App() {
+  const [isLoading, setIsLoading] = React.useState(true);
+
   const [pizzas, setPizzas] = React.useState([]);
   React.useEffect(() => {
     axios
       .get('https://68768680814c0dfa653c6992.mockapi.io/pizzas')
-      .then((res) => setPizzas(res.data))
+      .then((res) => setPizzas(res.data), setIsLoading(false))
       .catch((error) => {
         console.error('GETTING PIZZAS ERROR', error);
       });
@@ -15,21 +19,10 @@ function App() {
 
   return (
     <div className="wrapper">
-      <div className="content">
-        <Header />
+      <Header />
 
-        <div className="container">
-          <div className="content__top">
-            <Categories />
-            <Sort />
-          </div>
-          <h2 className="content__title">Все пиццы</h2>
-          <div className="content__items">
-            {pizzas.map((obj) => (
-              <PizzaBlock {...obj} />
-            ))}
-          </div>
-        </div>
+      <div className="content">
+        <Home pizzas={pizzas} setIsLoading={setIsLoading} isLoading={isLoading} />
       </div>
     </div>
   );
