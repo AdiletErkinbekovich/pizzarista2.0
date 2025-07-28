@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 function Cart() {
   return (
     <div class="wrapper">
-      <Header />
       <div class="content">
         <div class="container container--cart">
           <div class="cart">

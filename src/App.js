@@ -1,31 +1,25 @@
 import React from 'react';
-import axios from 'axios';
 import style from './scss/app.scss';
 import Home from './Pages/Home.jsx';
 import { Header } from './components/index.jsx';
+import NotFound from './Pages/NotFound.jsx';
+import { Routes, Route } from 'react-router-dom';
+import Cart from './Pages/Cart.jsx';
 
 function App() {
-  const [isLoading, setIsLoading] = React.useState(true);
-
-  const [pizzas, setPizzas] = React.useState([]);
-  React.useEffect(() => {
-    axios
-      .get('https://68768680814c0dfa653c6992.mockapi.io/pizzas')
-      .then((res) => setPizzas(res.data), setIsLoading(false))
-      .catch((error) => {
-        console.error('GETTING PIZZAS ERROR', error);
-      });
-  }, []);
-
   return (
     <div className="wrapper">
       <Header />
 
       <div className="content">
-        <Home pizzas={pizzas} setIsLoading={setIsLoading} isLoading={isLoading} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="cart" element={<Cart />} />
+        </Routes>
       </div>
     </div>
   );
 }
 
 export default App;
+//
