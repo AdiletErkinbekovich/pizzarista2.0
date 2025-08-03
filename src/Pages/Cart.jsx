@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from '../components';
+
 import { Link } from 'react-router-dom';
 function Cart() {
   return (
