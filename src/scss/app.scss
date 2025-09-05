@@ -19,6 +19,22 @@ body {
 .content {
   padding: 40px 0;
 
+  &__error-info {
+    margin: 100px auto;
+    width: 500px;
+    text-align: center;
+
+    h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 20px;
+    }
+  }
+
   &__title {
     margin: 35px 0;
   }
@@ -111,7 +127,7 @@ body {
 
   &__item {
     display: flex;
-    flex-wrap: wrap;
+
     justify-content: space-between;
 
     width: 100%;
@@ -160,6 +176,22 @@ body {
         svg {
           path:first-of-type {
             display: none;
+          }
+        }
+        &-disabled {
+          opacity: 0.3;
+          border-color: #989898;
+          &:active {
+            transform: none;
+          }
+          svg path {
+            fill: #989898;
+          }
+          &:hover {
+            background-color: transparent;
+            svg path {
+              fill: #989898;
+            }
           }
         }
       }
@@ -280,17 +312,18 @@ body {
   }
 
   &--empty {
-    margin: 0 auto;
-    width: 560px;
+    margin: 80px auto;
+    width: 620px;
     text-align: center;
 
     h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 15px;
     }
 
     p {
-      font-size: 18px;
+      font-size: 20px;
       line-height: 145.4%;
       letter-spacing: 0.01em;
       color: #777777;
